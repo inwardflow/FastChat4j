@@ -10,8 +10,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="fastchat4j" />
+        <module name="fastchat4j-models" />
         <module name="fastchat4j-core" />
+        <module name="fastchat4j-modules" />
       </profile>
     </annotationProcessing>
   </component>

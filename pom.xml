@@ -7,10 +7,34 @@
     <groupId>com.fastchat4j</groupId>
     <artifactId>fastchat4j</artifactId>
     <version>${revision}</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>fastchat4j-modules</module>
+        <module>fastchat4j-models</module>
+        <module>fastchat4j-core</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
     </properties>
+
+    <dependencies>
+
+        <!-- Lombok 2023.12.09 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- OKHttpClient 2023.12.09 -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.11.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
