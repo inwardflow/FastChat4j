@@ -7,6 +7,7 @@
     <groupId>com.fastchat4j</groupId>
     <artifactId>fastchat4j</artifactId>
     <version>${revision}</version>
+
     <packaging>pom</packaging>
     <modules>
         <module>fastchat4j-modules</module>
@@ -15,6 +16,7 @@
     </modules>
 
     <properties>
+        <revision>0.1.0</revision>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
     </properties>
@@ -34,6 +36,21 @@
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>4.11.0</version>
+        </dependency>
+
+        <!-- JUnit Test 2023.12.09 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.1</version> <!-- can be omitted when using the BOM -->
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Hutool 2023.12.09 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.23</version>
         </dependency>
     </dependencies>
 

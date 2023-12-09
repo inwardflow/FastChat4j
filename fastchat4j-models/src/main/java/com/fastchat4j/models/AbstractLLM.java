@@ -1,11 +1,13 @@
-package com.fastchat4j.core.entity;
+package com.fastchat4j.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import okhttp3.OkHttpClient;
 
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 public abstract class AbstractLLM {
 
     /**
@@ -32,4 +34,5 @@ public abstract class AbstractLLM {
      * OKHttpClient
      */
     private OkHttpClient okHttpClient;
+
 }
