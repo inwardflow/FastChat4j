@@ -1,14 +1,18 @@
 package com.fastchat4j.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
 import okhttp3.OkHttpClient;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
+/**
+ * LLM 大语言模型 抽象类
+ * @author InwardFlow
+ * @date 2023/12/10
+ */
 public abstract class AbstractLLM {
+
+    public static final Long DEFAULT_TOKEN_BALANCE = -1L;
 
     /**
      * 模型名称
@@ -26,7 +30,7 @@ public abstract class AbstractLLM {
     private List<String> apiKeyList;
 
     /**
-     * Api 接口地址
+     * DefaultApi 接口地址
      */
     private String apiHost;
 
@@ -34,5 +38,11 @@ public abstract class AbstractLLM {
      * OKHttpClient
      */
     private OkHttpClient okHttpClient;
+
+    /**
+     * Token 剩余额度, -1代表无限
+     */
+    @Builder.Default
+    private Long balance = DEFAULT_TOKEN_BALANCE;
 
 }
