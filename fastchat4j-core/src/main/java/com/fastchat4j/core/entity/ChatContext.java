@@ -1,9 +1,8 @@
 package com.fastchat4j.core.entity;
 
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * 对话上下文
@@ -12,35 +11,48 @@ import java.util.Map;
  */
 public final class ChatContext {
 
-    private final Map<String, String> chat;
+    // 创建 "messages" 数组
+    private final JSONArray messages;
 
-    private ChatContext(Map<String, String> chat) {
-        this.chat = new LinkedHashMap<>(chat);
+    private ChatContext(JSONArray messages) {
+        this.messages = new JSONArray(messages);
     }
 
-    public static ChatContext create(Map<String, String> chat) {
-        return new ChatContext(chat);
+    private ChatContext() {
+        this.messages = new JSONArray();
     }
 
-    public Map<String, String> getChat() {
-        return new LinkedHashMap<>(chat);
+    public static ChatContext create(JSONArray messages) {
+        return new ChatContext(messages);
+    }
+
+    public JSONArray getChat() {
+        return new JSONArray(messages);
     }
 
     @Override
     public String toString() {
-        return JSONUtil.toJsonStr(chat);
+        return JSONUtil.toJsonStr(messages);
     }
 
     public static class Builder {
-        private Map<String, String> chat = new LinkedHashMap<>();
+        // 创建 "messages" 数组
+        private final JSONArray messages = new JSONArray();
 
-        public Builder add(String role, String message) {
-            chat.put(role, message);
+        public Builder add(String role, String content) {
+            // 创建单个消息节点
+            JSONObject message = new JSONObject();
+            message.set("role", role);
+            message.set("content", content);
+
+            // 将消息节点添加到 messages 数组中
+            messages.put(message);
+
             return this;
         }
 
         public ChatContext build() {
-            return new ChatContext(chat);
+            return new ChatContext(messages);
         }
     }
 }
